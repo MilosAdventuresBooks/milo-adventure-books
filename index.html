@@ -4,54 +4,150 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Milo's Adventures by Mia Prinsloo</title>
-<meta name="description" content="Gentle picture books for ages 1 to 5, in English with a little Afrikaans.">
+<meta name="description" content="Gentle picture books for ages 1 to 5 by Mia Prinsloo, in English with a little Afrikaans.">
+<meta property="og:title" content="Milo's Adventures by Mia Prinsloo">
+<meta property="og:description" content="Gentle picture books for ages 1 to 5, in English with a little Afrikaans.">
+<meta property="og:image" content="https://milosadventuresbooks.github.io/milo-adventure-books/cover-4-boo-hoo-rawr.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;600;750&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #faf4e8; --ink: #2a1f3d; --muted: #6e5f55; --accent: #c8283a; --card: #fffdf8; --line: #e8dccb; }
+  :root {
+    --bg: #fbf7f0; --paper: #ffffff; --ink: #2b2236; --muted: #6d625a; --line: #ebe2d4;
+    --accent: #b8323f; --accent-hover: #9c2733; --accent-ink: #ffffff; --shadow: 0 10px 30px rgba(43, 34, 54, .14);
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Playpen Sans", system-ui, sans-serif; line-height: 1.55; }
-  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
-  header { text-align: center; }
-  header img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--card); box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-  h1 { font-size: 2rem; margin: 16px 0 4px; font-weight: 750; }
-  .by { color: var(--muted); margin: 0 0 18px; }
-  .intro { font-size: 1.05rem; text-align: center; margin: 0 auto 32px; max-width: 600px; }
-  h2 { font-size: 1.25rem; margin: 0 0 12px; }
-  ul.books { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 12px; }
-  .books li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
-  .books a { color: var(--accent); font-weight: 600; text-decoration: none; }
-  .books a:hover { text-decoration: underline; }
-  .books span { display: block; color: var(--muted); font-size: .95rem; }
-  footer { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: .9rem; }
-  footer a { color: var(--ink); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Lora", Georgia, serif; font-size: 17px; line-height: 1.6; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; margin: 0; }
+  a { color: inherit; }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; text-align: center; padding: 56px 16px 64px; }
+  .hero::before { content: ""; position: absolute; inset: -40px; background: url("hero.jpg") center / cover no-repeat; filter: blur(6px); transform: scale(1.05); }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(251,247,240,.35), rgba(251,247,240,.92) 85%, var(--bg)); }
+  .hero > * { position: relative; z-index: 1; }
+  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; border: 5px solid var(--paper); box-shadow: var(--shadow); }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 700; margin-top: 18px; letter-spacing: -.01em; }
+  .by { font-style: italic; color: var(--muted); margin: 6px 0 18px; font-size: 1.1rem; }
+  .lede { max-width: 600px; margin: 0 auto 22px; font-size: 1.08rem; }
+  .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0; margin: 0; list-style: none; }
+  .pills li { background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; font-size: .9rem; color: var(--muted); }
+
+  /* books */
+  main { max-width: 980px; margin: 0 auto; padding: 8px 16px 56px; }
+  .section-title { text-align: center; font-size: 1.9rem; font-weight: 500; margin: 8px 0 6px; }
+  .section-sub { text-align: center; color: var(--muted); margin: 0 0 32px; font-style: italic; }
+  .books { display: grid; gap: 28px; padding: 0; margin: 0; list-style: none; }
+  .book { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+  .cover { display: block; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease; }
+  .cover:hover { transform: translateY(-3px) rotate(-.6deg); }
+  .cover img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+  .tag { display: inline-block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .book h3 { font-size: 1.55rem; font-weight: 700; }
+  .af { font-family: "Fraunces", Georgia, serif; font-style: italic; color: var(--muted); font-size: 1.05rem; margin: 2px 0 10px; }
+  .book p { margin: 0 0 12px; }
+  .meta { color: var(--muted); font-size: .95rem; }
+  .btn { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 999px; margin-top: 4px; transition: background .15s ease; }
+  .btn:hover { background: var(--accent-hover); }
+  .note { max-width: 680px; margin: 28px auto 0; text-align: center; color: var(--muted); font-size: .92rem; font-style: italic; }
+
+  /* about + footer */
+  .about { max-width: 680px; margin: 48px auto 0; text-align: center; }
+  .about h2 { font-size: 1.6rem; font-weight: 500; margin-bottom: 10px; }
+  footer { border-top: 1px solid var(--line); margin-top: 48px; padding: 24px 16px 32px; text-align: center; color: var(--muted); font-size: .9rem; }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 640px) {
+    .book { grid-template-columns: 1fr; text-align: center; padding: 18px; }
+    .cover { max-width: 260px; margin: 0 auto; }
+  }
 </style>
 </head>
 <body>
+<header class="hero">
+  <img class="avatar" src="milo.jpg" alt="Milo, a little boy with curly hair, from the Milo's Adventures picture books">
+  <h1>Milo's Adventures</h1>
+  <p class="by">Picture books by Mia Prinsloo</p>
+  <p class="lede">Gentle picture books about Milo, his Ouma and Dog. Every book is in English, with an Afrikaans translation (and sometimes French too): a gentle first taste of another language for any family.</p>
+  <ul class="pills"><li>Ages 1 to 5</li><li>English and Afrikaans</li><li>Paperback</li></ul>
+</header>
+
 <main>
-  <header>
-    <img src="milo.jpg" alt="Milo, a little boy with curly hair, from the Milo's Adventures picture books">
-    <h1>Milo's Adventures</h1>
-    <p class="by">Picture books by Mia Prinsloo</p>
-  </header>
+  <h2 class="section-title">The books</h2>
+  <p class="section-sub">In the order they were published</p>
 
-  <p class="intro">Gentle picture books for ages 1 to 5 about Milo, his Ouma and Dog. Every book is in English, with an Afrikaans translation (and sometimes French too): a gentle first taste of another language for any family.</p>
-
-  <h2>The books</h2>
   <ul class="books">
-    <li><a href="https://books2read.com/u/mKak9E">Boo, Hoo, Rawr! / Boe, Hoe, Rawr!</a><span>A gently spooky, never scary first Halloween. Ages 1 to 5.</span></li>
-    <li><a href="https://books2read.com/u/31E0gM">So Much to Be Thankful For</a><span>A cosy first gratitude story in English, Afrikaans and French. Ages 1 to 5.</span></li>
-    <li><a href="https://books2read.com/u/meZk0A">Snowy Christmas, Sunny Christmas</a><span>A Christmas story for families with someone they love far away. Ages 2 to 6.</span></li>
-    <li><a href="https://books2read.com/u/4NY0rY">First Snow! / Eerste Sneeu!</a><span>A toddler's very first snow, with Ouma and Dog. Ages 1 to 5.</span></li>
-    <li><a href="https://books2read.com/u/3yYNoB">Wie's daar? / Who's There?</a><span>Garden animal sounds, Afrikaans first with English underneath. Babies to age 5.</span></li>
+    <li class="book">
+      <a class="cover" href="https://books2read.com/u/3yYNoB"><img src="cover-1-wies-daar.jpg" alt="Cover of Wie's daar? Who's There?, with Milo listening in a sunny garden" loading="lazy"></a>
+      <div>
+        <span class="tag">Animal sounds</span>
+        <h3>Wie's daar? / Who's There?</h3>
+        <p class="af">Afrikaans first, with English underneath</p>
+        <p>A tiny beetle, a gecko on the wall, a frog by the pond and a very noisy hadeda: Milo discovers the sounds of a sunny Cape Town garden.</p>
+        <p class="meta">Babies to age 5</p>
+        <a class="btn" href="https://books2read.com/u/3yYNoB">Find it on Amazon</a>
+      </div>
+    </li>
+    <li class="book">
+      <a class="cover" href="https://books2read.com/u/4NY0rY"><img src="cover-2-first-snow.jpg" alt="Cover of First Snow!, with Milo, Ouma and Dog in fresh snow" loading="lazy"></a>
+      <div>
+        <span class="tag">Winter</span>
+        <h3>First Snow!</h3>
+        <p class="af">Eerste Sneeu!</p>
+        <p>Milo wakes up to a white world. Boots on, coat on, mittens on, and out with Ouma and Dog into snow that is cold, soft and crunchy.</p>
+        <p class="meta">Ages 1 to 5 · English, with a line of Afrikaans on every page</p>
+        <a class="btn" href="https://books2read.com/u/4NY0rY">Find it on Amazon</a>
+      </div>
+    </li>
+    <li class="book">
+      <a class="cover" href="https://books2read.com/u/meZk0A"><img src="cover-3-snowy-christmas.jpg" alt="Cover of Snowy Christmas, Sunny Christmas, with a snowy house and a sunny house" loading="lazy"></a>
+      <div>
+        <span class="tag">Christmas</span>
+        <h3>Snowy Christmas, Sunny Christmas</h3>
+        <p class="af">Kersfees in die sneeu, Kersfees in die son</p>
+        <p>Milo has Christmas in the snow while Ouma and the family celebrate in the summer sun. Different on the outside, the same inside: for every family with someone they love far away.</p>
+        <p class="meta">Ages 2 to 6 · English, with a line of Afrikaans on every page</p>
+        <a class="btn" href="https://books2read.com/u/meZk0A">Find it on Amazon</a>
+      </div>
+    </li>
+    <li class="book">
+      <a class="cover" href="https://books2read.com/u/mKak9E"><img src="cover-4-boo-hoo-rawr.jpg" alt="Cover of Boo, Hoo, Rawr!, with Milo in a lion costume beside Ouma and Dog" loading="lazy"></a>
+      <div>
+        <span class="tag">Halloween</span>
+        <h3>Boo, Hoo, Rawr!</h3>
+        <p class="af">Boe, Hoe, Rawr!</p>
+        <p>Milo the little lion follows every strange sound down a glowing Halloween street, just brave enough to find out each time. Gently spooky, never scary, with a cosy bedtime ending.</p>
+        <p class="meta">Ages 1 to 5 · English, with a line of Afrikaans on every page</p>
+        <a class="btn" href="https://books2read.com/u/mKak9E">Find it on Amazon</a>
+      </div>
+    </li>
+    <li class="book">
+      <a class="cover" href="https://books2read.com/u/31E0gM"><img src="cover-5-thankful.jpg" alt="Cover of So Much to Be Thankful For, with Milo's family hugging among autumn leaves" loading="lazy"></a>
+      <div>
+        <span class="tag">Thanksgiving</span>
+        <h3>So Much to Be Thankful For</h3>
+        <p class="af">So Baie om voor Dankbaar te Wees · Tant de raisons de dire merci</p>
+        <p>Crunchy leaves, a round pumpkin, Dog's wagging tail and a big hug from Ouma: a cosy first story about gratitude.</p>
+        <p class="meta">Ages 1 to 5 · Every page in English, Afrikaans and French</p>
+        <a class="btn" href="https://books2read.com/u/31E0gM">Find it on Amazon</a>
+      </div>
+    </li>
   </ul>
 
-  <p>Follow Milo on Instagram: <a href="https://www.instagram.com/milo.adventure.books/">@milo.adventure.books</a></p>
+  <p class="note">All the books are paperbacks. Each link opens Books2Read, which takes you to your own country's Amazon. It may say "Ebook" and show a Kindle button: tap it and it opens the paperback.</p>
 
-  <footer>
-    <p>The illustrations are made with AI tools and then edited by the author.</p>
-    <p>Milo Social Uploader is a small private tool the author uses to schedule videos on the Milo's Adventures YouTube channel. <a href="privacy.html">Privacy policy</a></p>
-  </footer>
+  <section class="about">
+    <h2>About the books</h2>
+    <p>I began writing Milo's Adventures for my own toddler, so they'd grow up with the stories, sounds and words of two homes: one in the snowy north and one in the sunny south. More books are on the way.</p>
+    <p class="by">Mia Prinsloo</p>
+    <p><a href="https://www.instagram.com/milo.adventure.books/">Follow Milo on Instagram: @milo.adventure.books</a></p>
+  </section>
 </main>
+
+<footer>
+  <p>The illustrations are made with AI tools and then edited by the author.</p>
+  <p>Milo Social Uploader is a small private tool the author uses to schedule videos on the Milo's Adventures YouTube channel. <a href="privacy.html">Privacy policy</a></p>
+</footer>
 </body>
 </html>
