@@ -211,3 +211,6 @@
   .mq-next { right: max(16px, calc(50vw - 600px)); }
   .mq-prev:hover, .mq-next:hover { background: #fff; transform: scale(1.08); }
   @media (max-width: 760px) { .mq-prev, .mq-next { top: 87px; width: 40px; height: 40px; font-size: 1.7rem; } }
+
+  /* a caption never widens its picture: it wraps under the image, so the strip keeps an even gap between pictures */
+  .marquee figcaption, .strip figcaption { width: 0; min-width: 100%; line-height: 1.45; }
