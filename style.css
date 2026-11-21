@@ -242,3 +242,11 @@
     .age-sticker { width: 88px; height: 88px; top: -30px; left: -30px; }
     .age-sticker b { font-size: 1.55rem; }
   }
+  /* below 1180px the page margin is narrower than the sticker: move the cover in to make room */
+  @media (min-width: 761px) and (max-width: 1180px) {
+    section.kids .book { grid-template-columns: 336px 1fr; }
+    section.kids .cover-wrap { margin-left: 36px; }
+  }
+  @media (max-width: 360px) {
+    .age-sticker { left: -20px; }
+  }
