@@ -114,3 +114,30 @@
     requestAnimationFrame(frame);
   });
 })();
+
+// Back to top: a round button in the bottom right corner, shown once the jump-to-age buttons
+// at the top of the page have scrolled out of sight (under the sticky tabs counts as out of sight).
+(function () {
+  var bar = document.querySelector('.age-jump');
+  if (!bar || !('IntersectionObserver' in window)) return;
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.setAttribute('aria-label', 'Back to the top');
+  btn.innerHTML = '&#8593;';
+  btn.tabIndex = -1;
+  document.body.appendChild(btn);
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0 });
+    var first = bar.querySelector('a');
+    if (first) first.focus({ preventScroll: true });
+  });
+  var tabs = document.querySelector('nav.tabs');
+  var top = tabs ? tabs.offsetHeight : 0;
+  new IntersectionObserver(function (entries) {
+    var e = entries[0];
+    var gone = !e.isIntersecting && e.boundingClientRect.top < top;
+    btn.classList.toggle('show', gone);
+    btn.tabIndex = gone ? 0 : -1;
+  }, { rootMargin: '-' + top + 'px 0px 0px 0px' }).observe(bar);
+})();
