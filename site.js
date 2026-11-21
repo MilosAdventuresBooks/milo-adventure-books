@@ -70,8 +70,25 @@
       b.addEventListener('click', function () { nudge(dir === 'prev' ? -1 : 1); });
       wrap.appendChild(b);
     });
-    var pos = 0, last = 0, hold = 0, hover = false;
+    var pos = 0, last = 0, hold = 0, hover = false, fills = 0;
     function half() { return track.scrollWidth / 2; }
+    // A short strip on a wide screen runs out before it loops: copy the pages again (both
+    // halves, so each half still holds whole sets) until a half is wider than the screen.
+    function fill() {
+      Array.prototype.slice.call(track.children).forEach(function (f) {
+        var c = f.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        Array.prototype.forEach.call(c.querySelectorAll('a'), function (a) { a.tabIndex = -1; });
+        Array.prototype.forEach.call(c.querySelectorAll('img'), function (i) { i.alt = ''; });
+        track.appendChild(c);
+      });
+      fills++;
+    }
+    // widths are only real once the first set of pages has loaded
+    function loaded() {
+      return Array.prototype.every.call(track.querySelectorAll('figure:not([aria-hidden]) img'),
+        function (i) { return i.complete && i.naturalWidth > 0; });
+    }
     function stepSize() { var f = track.querySelector('figure'); return f ? f.getBoundingClientRect().width + 18 : 300; }
     function nudge(d) {
       hold = performance.now() + 3500;
@@ -86,6 +103,7 @@
     function frame(t) {
       var dt = last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
       var h = half();
+      if (fills < 3 && h > 0 && h < mq.clientWidth + stepSize() && loaded()) { fill(); h = half(); }
       if (Math.abs(mq.scrollLeft - pos) > 2) pos = mq.scrollLeft; // moved by hand
       var paused = reduce || hover || t < hold || document.body.classList.contains('lb-open');
       if (!paused) pos += SPEED * dt;
