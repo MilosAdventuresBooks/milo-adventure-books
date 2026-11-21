@@ -231,3 +231,14 @@
   .to-top:hover, .to-top:focus-visible { background: #24603d; }
   body.lb-open .to-top { display: none; }
   @media (max-width: 760px) { .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; } .age-jump { gap: 8px; } .age-jump span { width: 100%; text-align: center; margin: 0 0 2px; } }
+
+  /* kids page: round age sticker on the top corner of every cover */
+  .cover-wrap { position: relative; }
+  .age-sticker { position: absolute; top: -22px; right: -22px; width: 104px; height: 104px; border-radius: 50%; background: #2f7a4f; color: #fff; border: 4px solid var(--bg); box-shadow: 0 6px 16px rgba(28,36,64,.25); display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(8deg); font-family: "Josefin Sans", sans-serif; line-height: 1; text-align: center; }
+  .age-sticker span { font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin: 4px 0 4px .16em; }
+  .age-sticker b { font-size: 1.85rem; font-weight: 700; white-space: nowrap; }
+  @media (max-width: 760px) {
+    .book .cover-wrap { max-width: 280px; margin: 0 auto; }
+    .age-sticker { width: 88px; height: 88px; top: -16px; right: -12px; }
+    .age-sticker b { font-size: 1.55rem; }
+  }
