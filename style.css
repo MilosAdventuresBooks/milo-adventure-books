@@ -39,6 +39,8 @@
   section.pics { padding: 8px 0 80px; font-family: "Lora", Georgia, serif; }
   section.pics h2, section.pics h3 { font-family: "Fraunces", Georgia, serif; }
   section.pics h2 { font-size: 2.3rem; text-align: center; margin-top: 8px; }
+  section.pics .series-af { font-family: "Fraunces", Georgia, serif; font-size: 1.45rem; font-weight: 600; font-style: italic; color: var(--milo); text-align: center; margin: 2px 0 0; line-height: 1.2; }
+  section.pics h2:has(+ .series-af) { margin-bottom: 0; }
   section.pics .eyebrow { color: var(--milo); text-align: center; }
   section.pics .sub { text-align: center; font-style: italic; color: var(--muted); margin: 10px auto 40px; max-width: 680px; }
   .pshelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -303,6 +305,23 @@
   .door.read .word:nth-child(3) { color: #2f7a4f; transform: rotate(-2deg); }
   .door.read .eyebrow { color: var(--muted); }
   .door.soon:hover { transform: none; }
+
+  /* Read along with Milo: how the books work */
+  .series-intro { max-width: 760px; margin: -12px auto 56px; padding: 28px 34px 22px; background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+  .series-intro .eyebrow { text-align: center; }
+  .series-intro h3 { font-size: 1.5rem; margin: 4px 0 14px; text-align: center; }
+  .series-intro ul { margin: 0 0 14px; padding-left: 1.2em; }
+  .series-intro li b { font-family: "Fraunces", Georgia, serif; color: var(--milo); }
+  .series-intro li { margin: 0 0 14px; }
+  .series-intro .li-af { display: block; margin-top: 3px; color: var(--muted); font-style: italic; font-size: .9rem; }
+  .series-intro .li-af b { font-family: inherit; color: inherit; font-weight: 600; }
+  .series-intro .read-more { border-top: 1px solid var(--line); padding-top: 14px; font-size: .88rem; color: var(--muted); }
+  .series-intro .read-more h4 { font-size: 1rem; margin: 0 0 8px; color: var(--ink, inherit); }
+  .series-intro .read-more h4 .li-af { display: inline; margin-left: 6px; font-weight: 400; font-size: .85rem; }
+  .series-intro .read-more ul { margin: 0 0 6px; }
+  .series-intro .read-more li { margin: 0 0 6px; }
+  .series-intro .read-more a { color: var(--milo); overflow-wrap: anywhere; }
+  @media (max-width: 600px) { .series-intro { padding: 22px 20px 16px; } }
 
   /* other languages */
   .languages { max-width: 720px; margin: 64px auto 0; padding: 30px 34px; background: #fff; border: 1px solid var(--line); border-radius: 16px; text-align: center; }
