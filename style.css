@@ -298,11 +298,7 @@
   .door.science .art { background: radial-gradient(circle at 70% 25%, #3b4c8f, #141b3a 70%); }
   .door.science .eyebrow, .door.science .go { color: #3b5bb5; }
   .door.read { background: #fff; }
-  .door.read .art { background: linear-gradient(160deg, #e9e4f6, #f6e8d5); display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-  .door.read .word { font-family: "Fraunces", Georgia, serif; font-size: 2.2rem; font-weight: 700; background: #fff; color: var(--navy); border-radius: 12px; padding: 10px 20px; box-shadow: 0 8px 20px rgba(28,36,64,.15); }
-  .door.read .word:nth-child(1) { color: #b8323f; transform: rotate(-5deg); }
-  .door.read .word:nth-child(2) { color: #1b2440; transform: rotate(3deg); }
-  .door.read .word:nth-child(3) { color: #2f7a4f; transform: rotate(-2deg); }
+  .door.read .art { background: linear-gradient(160deg, #e9e4f6, #f6e8d5); }
   .door.read .eyebrow { color: var(--muted); }
   .door.soon:hover { transform: none; }
 
